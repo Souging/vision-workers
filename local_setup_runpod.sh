@@ -23,6 +23,7 @@ apt-get update \
         apt-utils \
         curl \
         wget \
+        aria2 \
         vim \
         \
         git \
@@ -57,9 +58,9 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh"
 # Install reqs
 conda create -n venv python=3.10.13 -y
 conda activate venv
-pip install -r llm_server/requirements.txt
+#pip install -r llm_server/requirements.txt
 pip install -r image_server/requirements.txt
-pip install -r validator_orchestrator/requirements.txt
+#pip install -r validator_orchestrator/requirements.txt
 
 CUDA_VERSION="11.8"
 
