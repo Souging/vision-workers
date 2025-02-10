@@ -33,7 +33,7 @@ download_file() {
     if [[ "${file}" == *.zip ]]; then
         echo "ZIP file detected. Skipping checksum verification for ${file}."
         if [ ! -f "$file" ]; then
-            wget -O "$file" "$url"
+            aria2c -x 8 -c -o "$file" "$url"
             echo "Downloaded ZIP file ${file}."
         else
             echo "ZIP file ${file} already exists. Skipping download."
@@ -55,7 +55,7 @@ download_file() {
         echo "File $file does not exist. Downloading."
     fi
 
-    wget -O "$temp_file" "$url"
+    aria2c -x 8 -c -o "$temp_file" "$url"
     downloaded_hash=$(sha256sum "$temp_file" | awk '{print $1}')
 
     if [ "$downloaded_hash" = "$expected_hash" ]; then
